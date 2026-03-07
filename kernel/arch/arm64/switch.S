@@ -1,5 +1,5 @@
-/*
- * Vib-OS Context Switch (ported from VibeOS)
+﻿/*
+ * SPACE-OS Context Switch (ported from VibeOS)
  *
  * Saves ALL registers for preemptive multitasking.
  * FPU state save/restore removed for simplicity.

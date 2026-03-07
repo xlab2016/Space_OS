@@ -1,5 +1,5 @@
-/*
- * Vib-OS VFS Compatibility Layer Implementation
+﻿/*
+ * SPACE-OS VFS Compatibility Layer Implementation
  *
  * Provides simple VibeOS-compatible VFS functions.
  * Includes embedded doom binary for /bin/doom access.

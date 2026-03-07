@@ -1,4 +1,4 @@
-/*
+﻿/*
  * VibCode x64 - Simple RAM-based Virtual Filesystem
  */
 
@@ -148,7 +148,7 @@ void vfs_seed_content(void) {
   
   f = vfs_open("/Desktop/readme.txt", O_CREAT | O_WRONLY);
   if (f) {
-    const char *txt = "Welcome to Vib-os!\n\nThis is a demo operating system.\n";
+    const char *txt = "Welcome to SPACE-OS!\n\nThis is a demo operating system.\n";
     vfs_write(f, txt, strlen(txt));
     vfs_close(f);
   }

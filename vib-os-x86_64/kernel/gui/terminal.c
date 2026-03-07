@@ -276,7 +276,7 @@ void term_execute(terminal_t *term, const char *cmd) {
   term_puts_t(term, "\n");
   
   if (strncmp(cmd, "help", 4) == 0) {
-    term_puts_t(term, "\033[1;36mVib-OS Terminal v2.0\033[0m\n");
+    term_puts_t(term, "\033[1;36mSPACE-OS Terminal v2.0\033[0m\n");
     term_puts_t(term, "\033[33mFile Commands:\033[0m\n");
     term_puts_t(term, "  ls        - List directory contents\n");
     term_puts_t(term, "  cd <dir>  - Change directory\n");
@@ -418,7 +418,7 @@ void term_execute(terminal_t *term, const char *cmd) {
     term_puts_t(term, "  \\ V /| || |_) |  | |_| |___) |\n");
     term_puts_t(term, "   \\_/ |_||_.__/    \\___/|____/ \n");
     term_puts_t(term, "\033[0m\n");
-    term_puts_t(term, "\033[33mOS:\033[0m      Vib-OS 0.5.0\n");
+    term_puts_t(term, "\033[33mOS:\033[0m      SPACE-OS 0.5.0\n");
     term_puts_t(term, "\033[33mHost:\033[0m    Bare Metal x86_64\n");
     term_puts_t(term, "\033[33mKernel:\033[0m  0.5.0-x86_64\n");
     term_puts_t(term, "\033[33mUptime:\033[0m  0 mins\n");
@@ -427,9 +427,9 @@ void term_execute(terminal_t *term, const char *cmd) {
     term_puts_t(term, "\033[33mCPU:\033[0m     x86_64\n");
   } else if (strncmp(cmd, "uname", 5) == 0) {
     if (strstr(cmd, "-a")) {
-      term_puts_t(term, "Vib-os 1.0.0 x86_64\n");
+      term_puts_t(term, "SPACE-OS 1.0.0 x86_64\n");
     } else {
-      term_puts_t(term, "Vib-os\n");
+      term_puts_t(term, "space-os\n");
     }
   } else if (strncmp(cmd, "free", 4) == 0) {
     term_puts_t(term, "              total        used        free\n");
@@ -456,7 +456,7 @@ void term_execute(terminal_t *term, const char *cmd) {
   } else if (strncmp(cmd, "id", 2) == 0) {
     term_puts_t(term, "uid=0(root) gid=0(root) groups=0(root)\n");
   } else if (strncmp(cmd, "hostname", 8) == 0) {
-    term_puts_t(term, "vib-os\n");
+    term_puts_t(term, "space-os\n");
   } else if (strncmp(cmd, "date", 4) == 0) {
     term_puts_t(term, "Thu Jan 23 00:00:00 UTC 2025\n");
   } else if (strncmp(cmd, "uptime", 6) == 0) {
@@ -469,7 +469,7 @@ void term_execute(terminal_t *term, const char *cmd) {
 
 /* Print prompt */
 void term_prompt(terminal_t *term) {
-  term_puts_t(term, "\033[32mvib-os\033[0m:\033[34m~\033[0m$ ");
+  term_puts_t(term, "\033[32mspace-os\033[0m:\033[34m~\033[0m$ ");
 }
 
 /* Handle keyboard input */
@@ -514,10 +514,10 @@ terminal_t *term_create(int x, int y) {
   }
   
   /* Welcome message (matching test version) */
-  term_puts_t(term, "\033[1;36mVib-OS Terminal v1.0\033[0m\n");
+  term_puts_t(term, "\033[1;36mSPACE-OS Terminal v1.0\033[0m\n");
   term_puts_t(term, "Type '\033[33mhelp\033[0m' for commands, "
                     "'\033[33mneofetch\033[0m' for system info.\n\n");
-  term_puts_t(term, "\033[32mvib-os\033[0m:\033[34m~\033[0m$ ");
+  term_puts_t(term, "\033[32mspace-os\033[0m:\033[34m~\033[0m$ ");
   
   return term;
 }

@@ -1,5 +1,5 @@
-/*
- * Vib-OS - APFS Filesystem Driver (Read-Only)
+﻿/*
+ * SPACE-OS - APFS Filesystem Driver (Read-Only)
  * 
  * Read support for Apple File System.
  * Enables dual-boot with macOS.

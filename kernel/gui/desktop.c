@@ -1,5 +1,5 @@
 /*
- * Vib-OS - Desktop Manager
+ * SPACE-OS - Desktop Manager
  *
  * macOS-style desktop with file/folder icons, right-click menus,
  * sorting, stacking, and full file operations.
@@ -841,7 +841,7 @@ static void menu_action_open(void *ctx) {
             }
             run_cmd[j] = '\0';
             term_execute_command(term, run_cmd);
-            term_puts(term, "\n\033[32mvib-os\033[0m:\033[34m~\033[0m$ ");
+            term_puts(term, "\n\033[32mspace-os\033[0m:\033[34m~\033[0m$ ");
           }
         }
         py_spawn_x = (py_spawn_x + 40) % 300 + 100;

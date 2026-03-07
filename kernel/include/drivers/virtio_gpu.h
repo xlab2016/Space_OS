@@ -1,5 +1,5 @@
-/*
- * Vib-OS - virtio-gpu Driver Header
+﻿/*
+ * SPACE-OS - virtio-gpu Driver Header
  */
 
 #ifndef DRIVERS_VIRTIO_GPU_H

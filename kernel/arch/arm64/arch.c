@@ -1,5 +1,5 @@
-/*
- * Vib-OS Kernel - ARM64 Architecture Implementation
+﻿/*
+ * SPACE-OS Kernel - ARM64 Architecture Implementation
  */
 
 #include "arch/arch.h"

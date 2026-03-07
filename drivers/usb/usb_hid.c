@@ -1,5 +1,5 @@
-/*
- * vib-OS - USB HID Driver
+﻿/*
+ * SPACE-OS - USB HID Driver
  * Implements Human Interface Device Class
  */
 

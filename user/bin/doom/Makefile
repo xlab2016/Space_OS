@@ -1,5 +1,5 @@
-# DOOM for Vib-OS - Makefile
-# Builds doomgeneric as a Vib-OS userspace program
+﻿# DOOM for SPACE-OS - Makefile
+# Builds doomgeneric as a SPACE-OS userspace program
 
 # Toolchain - Use LLVM/Clang like the kernel build
 LLVM_PATH := /opt/homebrew/opt/llvm/bin
@@ -10,7 +10,7 @@ AS := $(LLVM_PATH)/clang
 LD := $(BREW_PATH)/ld.lld
 OBJCOPY := $(LLVM_PATH)/llvm-objcopy
 
-# Directories (updated for Vib-OS structure)
+# Directories (updated for SPACE-OS structure)
 DOOM_SRC = doomgeneric/doomgeneric
 USER_LIB = ../../lib
 BUILD_DIR = build

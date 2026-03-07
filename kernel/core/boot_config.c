@@ -1,5 +1,5 @@
 /*
- * vib-OS - Boot Configuration and Splash Screen
+ * SPACE-OS - Boot Configuration and Splash Screen
  * 
  * Configurable boot with splash screen and boot target selection.
  */
@@ -205,7 +205,7 @@ void boot_init(void)
     }
     
     /* Add default boot entries */
-    boot_add_entry("vib-OS", boot_cfg.default_kernel, boot_cfg.kernel_cmdline);
+    boot_add_entry("Space-OS", boot_cfg.default_kernel, boot_cfg.kernel_cmdline);
     boot_add_entry("Recovery Mode", boot_cfg.recovery_kernel, "single recovery");
     boot_add_entry("Debug Shell", "/bin/sh", "debug");
     

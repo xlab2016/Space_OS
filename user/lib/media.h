@@ -1,5 +1,5 @@
-/*
- * Vib-OS User Media Library
+﻿/*
+ * SPACE-OS User Media Library
  * 
  * Provides userspace access to media decoding capabilities.
  * For kernel-mode GUI apps, use kernel/include/media/media.h directly.

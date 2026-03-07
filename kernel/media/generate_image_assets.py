@@ -30,6 +30,7 @@ def main():
     output_dir = "kernel/media"
     
     images = [
+        ("space.jpg", "bootstrap_space_jpg"),
         ("landscape.jpg", "bootstrap_landscape_jpg"),
         ("portrait.jpg", "bootstrap_portrait_jpg"),
         ("square.jpg", "bootstrap_square_jpg"),

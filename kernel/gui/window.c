@@ -1,5 +1,5 @@
 /*
- * Vib-OS - GUI Windowing System
+ * SPACE-OS - GUI Windowing System
  *
  * Complete window manager with compositor and widget toolkit.
  */
@@ -71,7 +71,7 @@ extern void term_set_content_pos(struct terminal *t, int x, int y);
 /* Wallpaper Manager                                                     */
 /* ===================================================================== */
 #define NUM_WALLPAPERS 10
-static int current_wallpaper = 0; /* 0 = Landscape (default image) */
+static int current_wallpaper = 0; /* 0 = Space (default image) */
 
 /* Wallpaper types: 0 = gradient, 1 = image */
 /* Wallpaper types: 0 = gradient, 1 = image */
@@ -82,7 +82,7 @@ static struct {
   const char *name;   /* Display name */
   const char *path;   /* Image path (for type=1) */
 } wallpapers[NUM_WALLPAPERS] = {
-    {1, 0, 0, 0, 0, 0, 0, "Landscape", "/Pictures/landscape.jpg"},
+    {1, 0, 0, 0, 0, 0, 0, "Space", "/Pictures/landscape.jpg"},
     {1, 0, 0, 0, 0, 0, 0, "Nature", "/Pictures/nature.jpg"},
     {1, 0, 0, 0, 0, 0, 0, "City", "/Pictures/city.jpg"},
     {1, 0, 0, 0, 0, 0, 0, "Portrait", "/Pictures/portrait.jpg"},
@@ -1319,7 +1319,7 @@ static void fm_on_mouse(struct window *win, int x, int y, int buttons) {
           run_cmd[j] = '\0';
           /* Execute the run command */
           term_execute_command(term, run_cmd);
-          term_puts(term, "\n\033[32mvib-os\033[0m:\033[34m~\033[0m$ ");
+          term_puts(term, "\n\033[32mspace-os\033[0m:\033[34m~\033[0m$ ");
         }
       }
 
@@ -1818,7 +1818,7 @@ static void draw_window(struct window *win) {
     gui_draw_rect(content_x + 80, content_y + 8, content_w - 96, 24, 0xFFFFFF);
     gui_draw_rect_outline(content_x + 80, content_y + 8, content_w - 96, 24,
                           0xA0A0A0, 1);
-    gui_draw_string(content_x + 88, content_y + 12, "http://vib-os.org",
+    gui_draw_string(content_x + 88, content_y + 12, "http://SPACE-OS.org",
                     0x333333, 0xFFFFFF);
 
     /* Navigation Buttons */
@@ -1863,7 +1863,7 @@ static void draw_window(struct window *win) {
   /* Help */
   else if (win->title[0] == 'H' && win->title[1] == 'e') {
     int yy = content_y + 10;
-    gui_draw_string(content_x + 10, yy, "Vib-OS Help", 0x89B4FA, THEME_BG);
+    gui_draw_string(content_x + 10, yy, "SPACE-OS Help", 0x89B4FA, THEME_BG);
     yy += 24;
     gui_draw_string(content_x + 10, yy, "Mouse:", 0xF9E2AF, THEME_BG);
     yy += 18;
@@ -1895,7 +1895,7 @@ static void draw_window(struct window *win) {
     yy += 32;
 
     /* OS Name - large and centered */
-    gui_draw_string(center_x - 40, yy, "Vib-OS", 0xFFFFFF, THEME_BG);
+    gui_draw_string(center_x - 40, yy, "SPACE-OS", 0xFFFFFF, THEME_BG);
     yy += 24;
 
     /* Version */
@@ -1919,7 +1919,7 @@ static void draw_window(struct window *win) {
     yy += 28;
 
     /* Copyright */
-    gui_draw_string(content_x + 30, yy, "(c) 2026 Vib-OS Project", 0x6C7086,
+    gui_draw_string(content_x + 30, yy, "(c) 2026 SPACE-OS Project", 0x6C7086,
                     THEME_BG);
   }
   /* Settings window */
@@ -2510,8 +2510,8 @@ static void draw_menu_bar(void) {
   /* Apple logo (using @ as placeholder, bold white) */
   gui_draw_string(14, 6, "@", 0xFFFFFF, 0x2D2D35);
 
-  /* Vib-OS name (bold) */
-  gui_draw_string(36, 6, "Vib-OS", 0xFFFFFF, 0x303038);
+  /* SPACE-OS name (bold) */
+  gui_draw_string(36, 6, "SPACE-OS", 0xFFFFFF, 0x303038);
 
   /* Clock on right - compute from PL031 RTC */
   {
@@ -2586,7 +2586,7 @@ static void draw_menu_bar(void) {
                           0x606070, 1);
 
     /* Menu items */
-    gui_draw_string(dropdown_x + 12, dropdown_y + 10, "About Vib-OS", 0xFFFFFF,
+    gui_draw_string(dropdown_x + 12, dropdown_y + 10, "About SPACE-OS", 0xFFFFFF,
                     0x404050);
 
     /* Separator line */
@@ -3564,7 +3564,7 @@ void gui_handle_mouse_event(int x, int y, int buttons) {
 
       printk("DROPDOWN CLICK: x=%d y=%d rel_y=%d\\n", x, y, rel_y);
 
-      /* About Vib-OS (y+10) */
+      /* About SPACE-OS (y+10) */
       if (rel_y >= 2 && rel_y < 32) {
         printk("Opening About window\\n");
         gui_create_window("About", 280, 180, 420, 260);
@@ -3655,7 +3655,7 @@ void gui_handle_mouse_event(int x, int y, int buttons) {
       printk("MENU CLICK: x=%d y=%d rel_y=%d dropdown_y=%d\\n", x, y, rel_y,
              dropdown_y);
 
-      /* About Vib-OS (y+10) - expanded range */
+      /* About SPACE-OS (y+10) - expanded range */
       if (rel_y >= 2 && rel_y < 32) {
         printk("MENU: Opening About window\\n");
         gui_create_window("About", 280, 180, 420, 260);
@@ -3683,7 +3683,7 @@ void gui_handle_mouse_event(int x, int y, int buttons) {
 
     /* Menu bar clicks */
     if (y < MENU_BAR_HEIGHT) {
-      /* Apple menu / Vib-OS logo area (x < 90) - toggle dropdown */
+      /* Apple menu / SPACE-OS logo area (x < 90) - toggle dropdown */
       if (x < 90) {
         menu_open = menu_open ? 0 : 1;
         return;
@@ -4028,79 +4028,98 @@ int gui_init(uint32_t *framebuffer, uint32_t width, uint32_t height,
   primary_display.bpp = 32;
 
   /* ============================================= */
-  /* LOADING SCREEN - Show during initialization  */
+  /* BOOT SPLASH - SpaceOS image fade in, glow, then transition to desktop */
   /* ============================================= */
 
-  /* Fill with dark gradient background */
-  for (int y = 0; y < (int)height; y++) {
-    int progress = (y * 256) / height;
-    uint8_t r = 15 + (progress * 10) / 256;
-    uint8_t g = 15 + (progress * 5) / 256;
-    uint8_t b = 30 + (progress * 25) / 256;
-    uint32_t color = (r << 16) | (g << 8) | b;
-    for (int x = 0; x < (int)width; x++) {
-      framebuffer[y * (pitch / 4) + x] = color;
+  extern const unsigned char bootstrap_space_jpg[];
+  extern const unsigned int bootstrap_space_jpg_len;
+
+  media_image_t splash_img = {0, 0, NULL};
+  int splash_ok = (media_decode_jpeg_buffer(
+                      bootstrap_space_jpg, (size_t)bootstrap_space_jpg_len,
+                      &splash_img, wallpaper_buffer,
+                      sizeof(wallpaper_buffer)) == 0);
+
+  if (splash_ok && splash_img.pixels && splash_img.width && splash_img.height) {
+    uint32_t *fb = framebuffer;
+    int fb_stride = pitch / 4;
+    uint32_t img_w = splash_img.width;
+    uint32_t img_h = splash_img.height;
+    uint32_t *img_px = splash_img.pixels;
+
+#define SPLASH_DELAY 4200000
+#define FADE_IN_STEPS 120
+#define GLOW_STEPS    50
+#define FADE_OUT_STEPS 90
+
+    /* Phase 1: Fade in - image slowly appears */
+    for (int step = 0; step <= FADE_IN_STEPS; step++) {
+      uint32_t bright = (step * 256) / FADE_IN_STEPS;
+      for (int y = 0; y < (int)height; y++) {
+        int iy = (y * (int)img_h) / (int)height;
+        if (iy >= (int)img_h) iy = (int)img_h - 1;
+        for (int x = 0; x < (int)width; x++) {
+          int ix = (x * (int)img_w) / (int)width;
+          if (ix >= (int)img_w) ix = (int)img_w - 1;
+          uint32_t c = img_px[iy * img_w + ix];
+          uint8_t r = (uint8_t)(c >> 16), g = (uint8_t)(c >> 8), b = (uint8_t)c;
+          r = (r * bright) >> 8;
+          g = (g * bright) >> 8;
+          b = (b * bright) >> 8;
+          fb[y * fb_stride + x] = ((uint32_t)r << 16) | ((uint32_t)g << 8) | b;
+        }
+      }
+      for (volatile int d = 0; d < SPLASH_DELAY; d++) ;
     }
+
+    /* Phase 2: Hold at full brightness (no overbright pulse) */
+    for (int step = 0; step < GLOW_STEPS; step++) {
+      uint32_t bright = 256;
+      for (int y = 0; y < (int)height; y++) {
+        int iy = (y * (int)img_h) / (int)height;
+        if (iy >= (int)img_h) iy = (int)img_h - 1;
+        for (int x = 0; x < (int)width; x++) {
+          int ix = (x * (int)img_w) / (int)width;
+          if (ix >= (int)img_w) ix = (int)img_w - 1;
+          uint32_t c = img_px[iy * img_w + ix];
+          uint8_t r = (uint8_t)(c >> 16), g = (uint8_t)(c >> 8), b = (uint8_t)c;
+          fb[y * fb_stride + x] = ((uint32_t)r << 16) | ((uint32_t)g << 8) | b;
+        }
+      }
+      for (volatile int d = 0; d < SPLASH_DELAY; d++) ;
+    }
+
+    /* Phase 3: Fade out - transition to black, then desktop will draw */
+    for (int step = FADE_OUT_STEPS; step >= 0; step--) {
+      uint32_t bright = (step * 256) / FADE_OUT_STEPS;
+      for (int y = 0; y < (int)height; y++) {
+        int iy = (y * (int)img_h) / (int)height;
+        if (iy >= (int)img_h) iy = (int)img_h - 1;
+        for (int x = 0; x < (int)width; x++) {
+          int ix = (x * (int)img_w) / (int)width;
+          if (ix >= (int)img_w) ix = (int)img_w - 1;
+          uint32_t c = img_px[iy * img_w + ix];
+          uint8_t r = (uint8_t)(c >> 16), g = (uint8_t)(c >> 8), b = (uint8_t)c;
+          r = (r * bright) >> 8;
+          g = (g * bright) >> 8;
+          b = (b * bright) >> 8;
+          fb[y * fb_stride + x] = ((uint32_t)r << 16) | ((uint32_t)g << 8) | b;
+        }
+      }
+      for (volatile int d = 0; d < SPLASH_DELAY; d++) ;
+    }
+  } else {
+    /* Fallback: simple dark screen if splash image failed */
+    for (int y = 0; y < (int)height; y++) {
+      for (int x = 0; x < (int)width; x++) {
+        framebuffer[y * (pitch / 4) + x] = 0x0a0a14;
+      }
+    }
+    for (volatile int d = 0; d < 2000000; d++) ;
   }
-
-  /* Draw Vib-OS logo text (large, centered) */
-  const char *logo = "Vib-OS";
-  int logo_x =
-      (width - 6 * 16) / 2; /* 6 chars, roughly 16px each for "big" text */
-  int logo_y = height / 2 - 60;
-
-  /* Draw each character larger (2x scale simulation) */
-  for (int i = 0; logo[i]; i++) {
-    int cx = logo_x + i * 20;
-    /* Draw character with bold effect */
-    gui_draw_char(cx, logo_y, logo[i], 0xFFFFFF, 0x000000);
-    gui_draw_char(cx + 1, logo_y, logo[i], 0xFFFFFF, 0x000000);
-    gui_draw_char(cx, logo_y + 1, logo[i], 0xFFFFFF, 0x000000);
-    gui_draw_char(cx + 1, logo_y + 1, logo[i], 0xFFFFFF, 0x000000);
-  }
-
-  /* Draw version text */
-  const char *version = "v1.0 - Modern Desktop Experience";
-  int ver_x = (width - 33 * 8) / 2;
-  int ver_y = logo_y + 40;
-  gui_draw_string(ver_x, ver_y, version, 0x9CA3AF, 0x000000);
-
-  /* Draw loading bar background */
-  int bar_w = 300;
-  int bar_h = 8;
-  int bar_x = (width - bar_w) / 2;
-  int bar_y = height / 2 + 40;
-  gui_draw_rect(bar_x, bar_y, bar_w, bar_h, 0x27272A);
-  gui_draw_rect(bar_x, bar_y, bar_w, 1, 0x3F3F46);
-
-  /* Animate loading bar */
-  const char *loading_msgs[] = {"Initializing hardware...",
-                                "Loading desktop environment...",
-                                "Starting services...", "Welcome to Vib-OS!"};
-
-  for (int stage = 0; stage < 4; stage++) {
-    /* Update progress bar */
-    int fill = (bar_w * (stage + 1)) / 4;
-    gui_draw_rect(bar_x + 1, bar_y + 1, fill - 2, bar_h - 2, 0x6366F1);
-
-    /* Draw loading message */
-    int msg_x = (width - 30 * 8) / 2;
-    int msg_y = bar_y + 20;
-    gui_draw_rect(msg_x - 10, msg_y - 2, 260, 20,
-                  0x000000); /* Clear previous */
-    gui_draw_string(msg_x, msg_y, loading_msgs[stage], 0xE4E4E7, 0x000000);
-
-    /* Small delay (busy wait for effect) */
-    for (volatile int d = 0; d < 2000000; d++)
-      ;
-  }
-
-  /* Brief pause on "Welcome" */
-  for (volatile int d = 0; d < 3000000; d++)
-    ;
 
   /* ============================================= */
-  /* END LOADING SCREEN                           */
+  /* END BOOT SPLASH                              */
   /* ============================================= */
 
   /* Register input callbacks */

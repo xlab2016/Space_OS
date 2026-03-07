@@ -1,5 +1,5 @@
-/*
- * vib-OS Kernel - DNS Resolver
+﻿/*
+ * SPACE-OS Kernel - DNS Resolver
  * 
  * Simple DNS client for name resolution.
  */

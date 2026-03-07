@@ -71,7 +71,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         log "Copied kernel as BOOTX64.EFI"
     else
         log "Kernel not found, creating placeholder..."
-        echo "Vib-OS x86_64 kernel placeholder" > "$EFI_MOUNT/EFI/BOOT/README.txt"
+        echo "SPACE-OS x86_64 kernel placeholder" > "$EFI_MOUNT/EFI/BOOT/README.txt"
     fi
     
     # Sync and unmount
@@ -115,7 +115,7 @@ else
         log "Copied kernel as BOOTX64.EFI"
     else
         log "Kernel not found, creating placeholder..."
-        echo "Vib-OS x86_64 kernel placeholder" > "$EFI_MOUNT/EFI/BOOT/README.txt"
+        echo "SPACE-OS x86_64 kernel placeholder" > "$EFI_MOUNT/EFI/BOOT/README.txt"
     fi
     
     # Sync and unmount

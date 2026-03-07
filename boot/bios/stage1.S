@@ -1,5 +1,5 @@
-/*
- * Vib-OS BIOS Bootloader - Stage 1
+﻿/*
+ * SPACE-OS BIOS Bootloader - Stage 1
  * 
  * This is the Master Boot Record (MBR) that loads stage 2
  * Loaded by BIOS at 0x7C00
@@ -96,7 +96,7 @@ print_string:
 /* ===================================================================== */
 
 msg_boot:
-    .asciz  "Vib-OS Stage 1\r\n"
+    .asciz  "SPACE-OS Stage 1\r\n"
 
 msg_stage2:
     .asciz  "Loading Stage 2...\r\n"

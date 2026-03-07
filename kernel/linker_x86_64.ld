@@ -1,5 +1,5 @@
-/*
- * Vib-OS Kernel Linker Script
+﻿/*
+ * SPACE-OS Kernel Linker Script
  * x86_64 (64-bit) kernel linking configuration
  */
 

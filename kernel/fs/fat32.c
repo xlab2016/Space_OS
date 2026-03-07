@@ -1,5 +1,5 @@
-/*
- * vib-OS - FAT32 Filesystem Implementation
+﻿/*
+ * SPACE-OS - FAT32 Filesystem Implementation
  */
 
 #include "fs/fat32.h"

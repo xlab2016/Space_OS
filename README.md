@@ -1,4 +1,4 @@
-# Vib-OS
+# SPACE-OS
 
 **Multi-Architecture Operating System with GUI**
 
@@ -16,16 +16,16 @@
   \ V /| || |_) |  | |_| |___) |
    \_/ |_||_.__/    \___/|____/ 
 
-Vib-OS v2.2.1 - Multi-Architecture OS with Full GUI
+SPACE-OS v2.2.1 - Multi-Architecture OS with Full GUI
 ```
 
 <p align="center">
-  <img src="screenshots/main.png" alt="Vib-OS Desktop" width="800">
+  <img src="screenshots/main.png" alt="SPACE-OS Desktop" width="800">
 </p>
 
 ## Overview
 
-Vib-OS is a from-scratch, Unix-like operating system with **full multi-architecture support** for **ARM64** and **x86_64**. It features a custom kernel, a modern macOS-inspired graphical user interface, a full TCP/IP networking stack, and a Virtual File System (VFS). Built with **25,000+ lines** of C and Assembly, it runs natively on QEMU, real hardware (Raspberry Pi 4/5, x86_64 PCs), and Apple Silicon.
+SPACE-OS is a from-scratch, Unix-like operating system with **full multi-architecture support** for **ARM64** and **x86_64**. It features a custom kernel, a modern macOS-inspired graphical user interface, a full TCP/IP networking stack, and a Virtual File System (VFS). Built with **25,000+ lines** of C and Assembly, it runs natively on QEMU, real hardware (Raspberry Pi 4/5, x86_64 PCs), and Apple Silicon.
 
 ## 🎯 Multi-Architecture Support
 
@@ -57,7 +57,7 @@ For a simplified x86_64 build that boots directly from UEFI on real hardware, se
 
 ### Main Desktop
 ![Main Desktop](screenshots/main.png)
-*Vib-OS desktop with animated dock, menu bar, and wallpaper system.*
+*SPACE-OS desktop with animated dock, menu bar, and wallpaper system.*
 
 ### File Manager
 ![File Manager](screenshots/filemanager.png)
@@ -180,7 +180,7 @@ graph TD
 - **Python Interpreter**: Run Python scripts directly in the terminal
   ```bash
   $ python examples/hello.py
-  Hello, Vib-OS!
+  Hello, SPACE-OS!
   
   $ python examples/fibonacci.py
   0, 1, 1, 2, 3, 5, 8, 13, 21, 34
@@ -373,7 +373,7 @@ make -f Makefile.multiarch ARCH=x86_64 qemu
 
 #### x86_64 PC
 1. Create bootable USB: `./scripts/create-uefi-image.sh`
-2. Write to USB: `sudo dd if=vibos-uefi.img of=/dev/sdX bs=4M`
+2. Write to USB: `sudo dd if=vibos-x86_64.img of=/dev/sdX bs=4M`
 3. Boot from USB (select UEFI boot in BIOS)
 
 ### Apple Silicon (M1/M2/M3/M4)

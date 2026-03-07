@@ -1,5 +1,5 @@
 /*
- * vib-OS - Login Program
+ * SPACE-OS - Login Program
  */
 
 #include <stdio.h>
@@ -64,11 +64,11 @@ int main(int argc, char *argv[]) {
   /* Clear screen */
   printf("\033[2J\033[H");
 
-  printf("Welcome to vib-OS v0.5.0\n");
+  printf("Welcome to SPACE-OS v0.5.0\n");
   printf("Kernel 0.5.0-arm64 on an aarch64\n\n");
 
   while (1) {
-    printf("vib-os login: ");
+    printf("space-os login: ");
     fflush(stdout);
 
     if (fgets(username, sizeof(username), stdin) == NULL) {

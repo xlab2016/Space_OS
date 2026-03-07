@@ -1,5 +1,5 @@
-/*
- * Vib-OS libc - sys/types.h
+﻿/*
+ * SPACE-OS libc - sys/types.h
  */
 
 #ifndef _SYS_TYPES_H

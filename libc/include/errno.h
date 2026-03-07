@@ -1,5 +1,5 @@
-/*
- * Vib-OS libc - errno.h
+﻿/*
+ * SPACE-OS libc - errno.h
  */
 
 #ifndef _ERRNO_H

@@ -1,5 +1,5 @@
-/*
- * Vib-OS libc - signal.h
+﻿/*
+ * SPACE-OS libc - signal.h
  */
 
 #ifndef _SIGNAL_H

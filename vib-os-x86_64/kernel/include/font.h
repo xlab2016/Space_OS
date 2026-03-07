@@ -1,5 +1,5 @@
-/*
- * Vib-OS Bitmap Font
+﻿/*
+ * SPACE-OS Bitmap Font
  * 
  * 8x16 monospace font for GUI display
  * (Adapted from VibeOS)

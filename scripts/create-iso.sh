@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================================
-# Vib-OS - Create Bootable ISO for VirtualBox/VMware
+# SPACE-OS - Create Bootable ISO for VirtualBox/VMware
 # ============================================================================
 # Creates a bootable ISO image that can be used with:
 # - VirtualBox (ARM64 or x86_64 emulation)
@@ -22,7 +22,7 @@ OUTPUT_ISO="${BUILD_DIR}/vib-os.iso"
 KERNEL_ELF="${BUILD_DIR}/kernel/unixos.elf"
 
 echo "============================================"
-echo "Vib-OS ISO Creator"
+echo "SPACE-OS ISO Creator"
 echo "============================================"
 
 # Check if kernel exists
@@ -48,20 +48,20 @@ cat > "${ISO_DIR}/boot/grub/grub.cfg" << 'EOF'
 set timeout=5
 set default=0
 
-menuentry "Vib-OS" {
-    echo "Loading Vib-OS kernel..."
+menuentry "SPACE-OS" {
+    echo "Loading SPACE-OS kernel..."
     multiboot2 /boot/vib-os.elf
     boot
 }
 
-menuentry "Vib-OS (Debug Mode)" {
-    echo "Loading Vib-OS kernel (debug)..."
+menuentry "SPACE-OS (Debug Mode)" {
+    echo "Loading SPACE-OS kernel (debug)..."
     multiboot2 /boot/vib-os.elf debug verbose
     boot
 }
 
-menuentry "Vib-OS (Recovery)" {
-    echo "Loading Vib-OS recovery..."
+menuentry "SPACE-OS (Recovery)" {
+    echo "Loading SPACE-OS recovery..."
     multiboot2 /boot/vib-os.elf single recovery
     boot
 }
@@ -71,7 +71,7 @@ EOF
 echo "[CONFIG] Creating EFI boot configuration..."
 cat > "${ISO_DIR}/EFI/BOOT/startup.nsh" << 'EOF'
 @echo off
-echo Loading Vib-OS...
+echo Loading SPACE-OS...
 \boot\vib-os.elf
 EOF
 
@@ -82,13 +82,13 @@ if command -v xorriso &> /dev/null; then
     # Use xorriso (preferred)
     xorriso -as mkisofs \
         -R -J \
-        -V "VIB-OS" \
+        -V "SPACE-OS" \
         -o "${OUTPUT_ISO}" \
         "${ISO_DIR}"
 elif command -v mkisofs &> /dev/null; then
     # Use mkisofs
     mkisofs -R -J \
-        -V "VIB-OS" \
+        -V "SPACE-OS" \
         -o "${OUTPUT_ISO}" \
         "${ISO_DIR}"
 elif command -v hdiutil &> /dev/null; then
@@ -117,7 +117,7 @@ echo ""
 echo "1. Open VirtualBox"
 echo "2. Click 'New' to create a new VM"
 echo "3. Settings:"
-echo "   - Name: Vib-OS"
+echo "   - Name: SPACE-OS"
 echo "   - Type: Other"
 echo "   - Version: Other/Unknown (64-bit)"
 echo "   - Memory: 2048 MB or more"

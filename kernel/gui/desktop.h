@@ -1,5 +1,5 @@
-/*
- * Vib-OS - Desktop Manager Header
+﻿/*
+ * SPACE-OS - Desktop Manager Header
  */
 
 #ifndef _DESKTOP_H

@@ -1,4 +1,4 @@
-# Vib-OS Master Makefile
+﻿# SPACE-OS Master Makefile
 # ARM64 OS for Apple Silicon and Raspberry Pi
 
 # ============================================================================
@@ -23,6 +23,8 @@ SYSROOT := $(BUILD_DIR)/sysroot
 
 # Detect OS
 UNAME_S := $(shell uname -s)
+# Audio: coreaudio on macOS; on Linux use 'none' (no sound) or override: make run-gui QEMU_AUDIO=sdl
+QEMU_AUDIO ?= $(if $(filter Darwin,$(UNAME_S)),coreaudio,none)
 
 # Toolchain - Support both macOS (Homebrew) and Linux (system/apt)
 ifeq ($(UNAME_S),Darwin)
@@ -283,11 +285,11 @@ test: kernel
 # ============================================================================
 
 run: kernel
-	@echo "[RUN] Starting Vib-OS in QEMU..."
+	@echo "[RUN] Starting SPACE-OS in QEMU..."
 	@qemu-system-aarch64 -M virt,gic-version=3 -cpu max -m 4G -nographic -kernel $(KERNEL_BINARY)
 
 run-gui: kernel
-	@echo "[RUN] Starting Vib-OS with GUI display..."
+	@echo "[RUN] Starting SPACE-OS with GUI display..."
 	@qemu-system-aarch64 -M virt,gic-version=3 \
 		-cpu max -m 512M \
 		-global virtio-mmio.force-legacy=false \
@@ -296,13 +298,13 @@ run-gui: kernel
 		-device virtio-tablet-device \
 		-device virtio-net-device,netdev=net0 \
 		-netdev user,id=net0 \
-		-audiodev coreaudio,id=snd0 \
+		-audiodev $(QEMU_AUDIO),id=snd0 \
 		-device intel-hda -device hda-duplex,audiodev=snd0 \
 		-serial stdio \
 		-kernel $(KERNEL_BINARY)
 
 run-gpu: kernel
-	@echo "[RUN] Starting Vib-OS with virtio-GPU acceleration..."
+	@echo "[RUN] Starting SPACE-OS with virtio-GPU acceleration..."
 	@qemu-system-aarch64 -M virt,gic-version=3 \
 		-cpu max -m 512M \
 		-global virtio-mmio.force-legacy=false \
@@ -312,7 +314,7 @@ run-gpu: kernel
 		-device virtio-tablet-device \
 		-device virtio-net-device,netdev=net0 \
 		-netdev user,id=net0 \
-		-audiodev coreaudio,id=snd0 \
+		-audiodev $(QEMU_AUDIO),id=snd0 \
 		-device intel-hda -device hda-duplex,audiodev=snd0 \
 		-serial stdio \
 		-kernel $(KERNEL_BINARY)

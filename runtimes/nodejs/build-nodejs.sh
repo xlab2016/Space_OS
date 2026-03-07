@@ -1,8 +1,8 @@
-#!/bin/bash
+﻿#!/bin/bash
 # ============================================================================
-# vib-OS - Node.js 20 LTS Cross-Compilation Script
+# SPACE-OS - Node.js 20 LTS Cross-Compilation Script
 # ============================================================================
-# Cross-compiles Node.js 20 for ARM64 vib-OS.
+# Cross-compiles Node.js 20 for ARM64 SPACE-OS.
 #
 # Prerequisites:
 # - LLVM/Clang toolchain
@@ -32,7 +32,7 @@ LDFLAGS="-target ${TARGET} --sysroot=${SYSROOT} -L${SYSROOT}/lib"
 export CFLAGS CXXFLAGS LDFLAGS
 
 echo "============================================"
-echo "vib-OS Node.js 20 LTS Cross-Compilation"
+echo "SPACE-OS Node.js 20 LTS Cross-Compilation"
 echo "============================================"
 echo "Version: ${NODE_VERSION}"
 echo "Target: ${TARGET}"

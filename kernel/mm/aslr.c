@@ -1,5 +1,5 @@
-/*
- * vib-OS Kernel - ASLR Implementation
+﻿/*
+ * SPACE-OS Kernel - ASLR Implementation
  *
  * Uses hardware timer counter as entropy source for address randomization.
  * Implements a simple LCG PRNG seeded from timer values.

@@ -934,7 +934,7 @@ static void term_puts(const char *str, uint8_t color) {
 }
 
 static void term_prompt(void) {
-  term_puts("vib-os", 10); /* Green */
+  term_puts("space-os", 10); /* Green */
   term_puts(":", 7);       /* White */
   term_puts("~", 12);      /* Blue */
   term_puts("$ ", 7);      /* White */
@@ -968,7 +968,7 @@ static void term_execute(const char *cmd) {
     terminal.cursor_x = 0;
     terminal.cursor_y = 0;
   } else if (strcmp(cmd, "help") == 0) {
-    term_puts("Vib-OS Terminal v2.0\n", 14);
+    term_puts("SPACE-OS Terminal v2.0\n", 14);
     term_puts("File Commands:\n", 11);
     term_puts("  ls        - List directory contents\n", 7);
     term_puts("  cd <dir>  - Change directory\n", 7);
@@ -984,7 +984,7 @@ static void term_execute(const char *cmd) {
     term_puts("  clear     - Clear screen\n", 7);
     term_puts("  help      - This help message\n", 7);
   } else if (strcmp(cmd, "uname") == 0 || strcmp(cmd, "uname -a") == 0) {
-    term_puts("Vib-OS 1.0.0 x86_64\n", 11);
+    term_puts("SPACE-OS 1.0.0 x86_64\n", 11);
   } else if (strcmp(cmd, "neofetch") == 0) {
     term_puts("       _  _         ___  ____  \n", 14);
     term_puts(" __   _(_)| |__     / _ \\/ ___| \n", 14);
@@ -993,7 +993,7 @@ static void term_execute(const char *cmd) {
     term_puts("   \\_/ |_||_.__/    \\___/|____/ \n", 14);
     term_puts("\n", 7);
     term_puts("OS:      ", 11);
-    term_puts("Vib-OS 1.0.0\n", 7);
+    term_puts("SPACE-OS 1.0.0\n", 7);
     term_puts("Host:    ", 11);
     term_puts("QEMU x86_64 Virtual Machine\n", 7);
     term_puts("Kernel:  ", 11);
@@ -1009,7 +1009,7 @@ static void term_execute(const char *cmd) {
   } else if (strcmp(cmd, "id") == 0) {
     term_puts("uid=0(root) gid=0(root) groups=0(root)\n", 7);
   } else if (strcmp(cmd, "hostname") == 0) {
-    term_puts("vib-os\n", 7);
+    term_puts("space-os\n", 7);
   } else if (strcmp(cmd, "free") == 0) {
     term_puts("              total        used        free\n", 7);
     term_puts("Mem:         512 MB       12 MB      500 MB\n", 7);
@@ -2042,7 +2042,7 @@ static void draw_help_window(void) {
 
   /* Content */
   int ty = y + title_h + UI_SCALE_VAL(18);
-  gui_draw_string(x + UI_SCALE_VAL(20), ty, "Vib-os Desktop", THEME_BLUE);
+  gui_draw_string(x + UI_SCALE_VAL(20), ty, "SPACE-OS Desktop", THEME_BLUE);
   ty += line_gap;
   gui_draw_string(x + UI_SCALE_VAL(20), ty, "Version 1.0", THEME_SUBTEXT);
   ty += section_gap;
@@ -2191,7 +2191,7 @@ static void draw_menu_bar(void) {
   gui_draw_string(UI_SCALE_VAL(14), text_y, "@", 0xFFFFFF);
   
   /* App name - bold */
-  gui_draw_string(UI_SCALE_VAL(36), text_y, "Vib-os", 0xFFFFFF);
+  gui_draw_string(UI_SCALE_VAL(36), text_y, "SPACE-OS", 0xFFFFFF);
 
   /* Right side - Clock */
   int clock_w = font_string_width("12:00");
@@ -2225,7 +2225,7 @@ static void draw_menu_bar(void) {
     
     /* Menu items */
     gui_draw_string(dd_x + UI_SCALE_VAL(12), dd_y + UI_SCALE_VAL(10),
-                    "About Vib-os", 0xFFFFFF);
+                    "About SPACE-OS", 0xFFFFFF);
     fb_fill_rect(dd_x + UI_SCALE_VAL(8), dd_y + UI_SCALE_VAL(30),
                  dd_w - UI_SCALE_VAL(16), UI_SCALE_VAL(1), 0x606070);
     gui_draw_string(dd_x + UI_SCALE_VAL(12), dd_y + UI_SCALE_VAL(38),
@@ -2592,7 +2592,7 @@ void gui_init(void) {
 
   /* Show terminal and file manager as demo */
   terminal.visible = 1;
-  term_puts("Vib-OS Terminal v1.0\n", 14); /* Cyan */
+  term_puts("SPACE-OS Terminal v1.0\n", 14); /* Cyan */
   term_puts("Type 'help' for commands, 'neofetch' for system info.\n\n", 7);
   term_prompt();
 

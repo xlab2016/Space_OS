@@ -1,5 +1,5 @@
-/*
- * vib-OS Kernel - Address Space Layout Randomization (ASLR)
+﻿/*
+ * SPACE-OS Kernel - Address Space Layout Randomization (ASLR)
  *
  * Provides base address randomization for user processes to make
  * buffer overflow exploitation more difficult.

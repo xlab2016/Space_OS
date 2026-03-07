@@ -1,5 +1,5 @@
-/*
- * Vib-OS libc - sys/stat.h
+﻿/*
+ * SPACE-OS libc - sys/stat.h
  */
 
 #ifndef _SYS_STAT_H

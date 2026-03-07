@@ -1,5 +1,5 @@
-/*
- * Vib-OS Kernel API for Userspace Applications
+﻿/*
+ * SPACE-OS Kernel API for Userspace Applications
  * 
  * IMPORTANT: This structure MUST match user/lib/vibe.h exactly!
  * Programs like DOOM depend on the exact field layout.

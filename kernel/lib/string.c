@@ -1,5 +1,5 @@
-/*
- * Vib-OS - Kernel String/Memory Functions
+﻿/*
+ * SPACE-OS - Kernel String/Memory Functions
  */
 
 #include "types.h"

@@ -1,5 +1,5 @@
-/*
- * Vib-OS libc - fcntl.h
+﻿/*
+ * SPACE-OS libc - fcntl.h
  */
 
 #ifndef _FCNTL_H

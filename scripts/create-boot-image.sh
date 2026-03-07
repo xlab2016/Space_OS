@@ -24,13 +24,44 @@ IMAGE_PATH="$IMAGE_DIR/$IMAGE_NAME"
 
 log "Creating disk image: $IMAGE_PATH ($IMAGE_SIZE)"
 
-# Create empty disk image
+# Detect OS
+if [ "$(uname -s)" = "Linux" ]; then
+    # --- Linux (WSL/Ubuntu etc.) ---
+    dd if=/dev/zero of="$IMAGE_PATH" bs=1M count=1024 2>/dev/null
+    LOOP=$(losetup -f --show "$IMAGE_PATH")
+    trap "losetup -d $LOOP 2>/dev/null || true" EXIT
+    parted -s "$LOOP" mklabel gpt
+    parted -s "$LOOP" mkpart EFI fat32 1MiB 501MiB
+    parted -s "$LOOP" mkpart ROOT ext4 501MiB 100%
+    parted -s "$LOOP" set 1 esp on
+    losetup -d "$LOOP"
+    trap - EXIT
+    LOOP=$(losetup -f --show -P "$IMAGE_PATH")
+    trap "losetup -d $LOOP 2>/dev/null || true" EXIT
+    mkfs.vfat -n EFI "${LOOP}p1" 2>/dev/null || mkfs.vfat -n EFI "${LOOP}p1"
+    EFI_MOUNT=$(mktemp -d)
+    mount "${LOOP}p1" "$EFI_MOUNT"
+    mkdir -p "$EFI_MOUNT/EFI/BOOT"
+    if [ -f "$BUILD_DIR/kernel/unixos.efi" ]; then
+        cp "$BUILD_DIR/kernel/unixos.efi" "$EFI_MOUNT/EFI/BOOT/BOOTAA64.EFI"
+    elif [ -f "$BUILD_DIR/kernel/unixos.elf" ]; then
+        cp "$BUILD_DIR/kernel/unixos.elf" "$EFI_MOUNT/EFI/BOOT/kernel.elf"
+        printf '@echo -off\r\necho UnixOS Boot Loader\r\n\\EFI\\BOOT\\kernel.elf\r\n' > "$EFI_MOUNT/EFI/BOOT/startup.nsh"
+    fi
+    sync
+    umount "$EFI_MOUNT"
+    rmdir "$EFI_MOUNT"
+    losetup -d "$LOOP"
+    trap - EXIT
+    log "Boot image created successfully: $IMAGE_PATH"
+    ls -lh "$IMAGE_PATH"
+    exit 0
+fi
+
+# --- macOS ---
 dd if=/dev/zero of="$IMAGE_PATH" bs=1m count=1024 2>/dev/null
 
 log "Creating GPT partition table..."
-
-# On macOS, we need to use different tools
-# Create a GPT partition table with EFI and root partitions
 
 # Attach the disk image
 DISK=$(hdiutil attach -nomount "$IMAGE_PATH" | head -1 | awk '{print $1}')

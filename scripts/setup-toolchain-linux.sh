@@ -1,11 +1,11 @@
-#!/bin/bash
-# Vib-OS Toolchain Setup Script for Linux (Ubuntu/Debian)
-# Installs all dependencies required to build Vib-OS on Linux
+﻿#!/bin/bash
+# SPACE-OS Toolchain Setup Script for Linux (Ubuntu/Debian)
+# Installs all dependencies required to build SPACE-OS on Linux
 
 set -e
 
 echo "========================================"
-echo "Vib-OS Toolchain Setup for Linux"
+echo "SPACE-OS Toolchain Setup for Linux"
 echo "========================================"
 echo ""
 

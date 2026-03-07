@@ -1,5 +1,5 @@
-/*
- * Vib-OS ELF64 Loader
+﻿/*
+ * SPACE-OS ELF64 Loader
  * Ported from VibeOS
  */
 

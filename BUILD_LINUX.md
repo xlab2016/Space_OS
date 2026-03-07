@@ -1,6 +1,6 @@
-# Building Vib-OS on Ubuntu/Linux
+﻿# Building SPACE-OS on Ubuntu/Linux
 
-This guide helps you build Vib-OS on Ubuntu or other Linux distributions.
+This guide helps you build SPACE-OS on Ubuntu or other Linux distributions.
 
 ## Quick Start
 

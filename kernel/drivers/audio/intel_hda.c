@@ -1,5 +1,5 @@
-/*
- * Vib-OS - Intel HDA Audio Driver Implementation
+﻿/*
+ * SPACE-OS - Intel HDA Audio Driver Implementation
  */
 
 #include "drivers/intel_hda.h"

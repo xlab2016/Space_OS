@@ -1,5 +1,5 @@
-/*
- * Vib-OS Kernel Linker Script for Limine bootloader
+﻿/*
+ * SPACE-OS Kernel Linker Script for Limine bootloader
  * Higher-half kernel for x86_64
  */
 

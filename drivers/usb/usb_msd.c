@@ -1,5 +1,5 @@
-/*
- * vib-OS - USB Mass Storage Driver
+﻿/*
+ * SPACE-OS - USB Mass Storage Driver
  * Implements Bulk-Only Transport (BOT)
  */
 

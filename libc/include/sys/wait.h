@@ -1,5 +1,5 @@
-/*
- * Vib-OS libc - sys/wait.h
+﻿/*
+ * SPACE-OS libc - sys/wait.h
  */
 
 #ifndef _SYS_WAIT_H

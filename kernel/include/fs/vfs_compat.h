@@ -1,7 +1,7 @@
-/*
- * Vib-OS VFS Compatibility Layer (VibeOS-style API shim)
+﻿/*
+ * SPACE-OS VFS Compatibility Layer (VibeOS-style API shim)
  *
- * Provides simple VibeOS-compatible VFS functions on top of Vib-OS's
+ * Provides simple VibeOS-compatible VFS functions on top of SPACE-OS's
  * Linux-like VFS. This enables ported VibeOS apps to work.
  */
 

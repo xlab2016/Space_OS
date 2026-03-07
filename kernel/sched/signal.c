@@ -1,5 +1,5 @@
-/*
- * vib-OS Kernel - Signal Handling
+﻿/*
+ * SPACE-OS Kernel - Signal Handling
  *
  * POSIX signal implementation for process control.
  */

@@ -1,5 +1,5 @@
-/*
- * Vib-OS - Virtio MMIO Network Driver
+﻿/*
+ * SPACE-OS - Virtio MMIO Network Driver
  */
 
 #include "types.h"
