@@ -251,10 +251,55 @@ $(KERNEL_BINARY): $(ALL_OBJECTS)
 	@echo "[KERNEL] $(ARCH) build complete: $@"
 
 # ============================================================================
+# Magic ASM (extended assembler: print "..." etc.)
+# ============================================================================
+
+MAGIC_ASM_DIR := $(ROOT_DIR)/magic/asm
+MAGIC_ASM := $(MAGIC_ASM_DIR)/magic-asm
+ifeq ($(OS),Windows_NT)
+    MAGIC_ASM := $(MAGIC_ASM).exe
+endif
+
+$(MAGIC_ASM): $(MAGIC_ASM_DIR)/main.c
+	@echo "[MAGIC-ASM] Building..."
+	@$(MAKE) -C $(MAGIC_ASM_DIR) CC="$(CC)"
+	@echo "[MAGIC-ASM] Done: $(MAGIC_ASM)"
+
+# ============================================================================
+# x86 BIOS Boot (stage1 from .masm, stage2 from .S)
+# ============================================================================
+
+BOOT_DIR_BIOS := $(BOOT_DIR)/bios
+BUILD_BOOT := $(BUILD_DIR)/boot
+
+# Stage1: .masm -> magic-asm -> .o (ELF) -> .bin (MBR, 512 bytes, load at 0x7C00)
+$(BUILD_BOOT)/stage1.o: $(BOOT_DIR_BIOS)/stage1.masm $(MAGIC_ASM)
+	@mkdir -p $(BUILD_BOOT)
+	@echo "[MAGIC-ASM] $< -> $@ (ELF)"
+	@$(MAGIC_ASM) $< $@
+
+$(BUILD_BOOT)/stage1.bin: $(BUILD_BOOT)/stage1.o
+	@echo "[LD] stage1.bin (raw MBR)"
+	@$(LD) -m elf_i386 -Ttext=0x7c00 -e _start -N --oformat binary -o $@ $<
+
+# Stage2: .S -> .o -> .bin (load at 0x7E00)
+$(BUILD_BOOT)/stage2.o: $(BOOT_DIR_BIOS)/stage2.S
+	@mkdir -p $(BUILD_BOOT)
+	@echo "[AS] stage2 (16-bit)"
+	@$(AS) --target=i386-pc-none -x assembler -c $< -o $@
+
+$(BUILD_BOOT)/stage2.bin: $(BUILD_BOOT)/stage2.o
+	@echo "[LD] stage2.bin (raw)"
+	@$(LD) -m elf_i386 -Ttext=0x7e00 -e _start -N --oformat binary -o $@ $<
+
+# ============================================================================
 # Boot Image Creation
 # ============================================================================
 
 image: kernel
+ifeq ($(ARCH),x86)
+image: $(BUILD_BOOT)/stage1.bin $(BUILD_BOOT)/stage2.bin
+endif
 	@echo "[IMAGE] Creating $(ARCH) boot image..."
 ifeq ($(ARCH),arm64)
 	@./scripts/create-boot-image.sh $(BUILD_DIR) $(IMAGE_DIR)
