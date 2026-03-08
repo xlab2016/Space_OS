@@ -21,6 +21,9 @@
 SPACE-OS v0.0.1 - Agentic Modular OS with AI built in integrated into the system
 ```
 
+Current work:
+- Adding magic assembler fully assembles instructions to .o format! (magic/asm)
+
 <p align="center">
   <img src="screenshots/main.png" alt="SPACE-OS Desktop" width="800">
 </p>
