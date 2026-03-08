@@ -20,6 +20,7 @@ _start:
     call    putchar_A
     call    putchar_B
     call    putchar_C
+    print "/r/nSpace OS/r/n"
 
 halt:
     cli
