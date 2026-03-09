@@ -35,16 +35,12 @@ QEMU := $(shell command -v qemu-system-i386 2>/dev/null || command -v qemu-syste
 run: $(BIN)
 	@if [ -z "$(QEMU)" ]; then echo "QEMU not found. Install: sudo apt install qemu-system-x86"; exit 1; fi
 	@echo "=== QEMU in THIS terminal (no window). Serial 'D' and BIOS text here. Exit: Ctrl+A X ==="
-	$(QEMU) -drive format=raw,file=$(BIN),if=floppy,index=0 -boot order=a -nographic -display none -serial mon:stdio
-
-run-hd: $(BIN)
-	@if [ -z "$(QEMU)" ]; then echo "QEMU not found."; exit 1; fi
 	$(QEMU) -drive format=raw,file=$(BIN),if=ide,index=0,media=disk -boot order=c -nographic -display none -serial mon:stdio
 
 run-window: $(BIN)
 	@if [ -z "$(QEMU)" ]; then echo "QEMU not found."; exit 1; fi
 	@echo "QEMU window (VGA). Serial not in terminal."
-	$(QEMU) -drive format=raw,file=$(BIN),if=floppy,index=0 -boot order=a
+	$(QEMU) -drive format=raw,file=$(BIN),if=ide,index=0,media=disk -boot order=c
 
 # Второй пример: call/ret для отладки
 call_ret.o: call_ret.masm $(MAGIC_ASM)
@@ -62,7 +58,7 @@ call_ret.bin: call_ret.elf
 run-call-ret: call_ret.bin
 	@if [ -z "$(QEMU)" ]; then echo "QEMU not found."; exit 1; fi
 	@echo "QEMU window (VGA). Exit: Ctrl+Alt+G then close."
-	$(QEMU) -drive format=raw,file=call_ret.bin,if=floppy,index=0 -boot order=a
+	$(QEMU) -drive format=raw,file=call_ret.bin,if=ide,index=0,media=disk -boot order=c
 
 # Дамп .bin для отладки (скопировать вывод и скинуть для сравнения)
 dump: $(BIN)

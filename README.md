@@ -71,6 +71,13 @@ Will be:
 
 ## 📸 Screenshots
 
+### It works!
+Space OS booting in QEMU from hard disk (Magic ASM sample: call_ret → ABC + "Space OS").
+
+<p align="center">
+  <img src="assets/qemu-boot.png" alt="QEMU boot — it works!" width="700">
+</p>
+
 ### Main Desktop
 ![Main Desktop](screenshots/main.png)
 *SPACE-OS desktop with animated dock, menu bar, and wallpaper system.*
